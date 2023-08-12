@@ -13,9 +13,11 @@ connectDB();
 // Route files
 const quotes = require("./routes/quotes");
 
-//const { connect } = require("http2");
-
 const app = express();
+
+// Body Parser
+
+app.use(express.json());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
