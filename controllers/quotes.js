@@ -70,6 +70,16 @@ exports.updateQuote = async (req, res, next) => {
 // @desc        Delete quote
 // @route       Delete /api/v1/quote/:id
 // @access      Private
-exports.deleteQuote = (req, res, next) => {
-  res.status(200).json({ success: true, msg: `Delete quote ${req.params.id}` });
+exports.deleteQuote = async (req, res, next) => {
+  try {
+    const quote = await Quote.findByIdAndDelete(req.params.id);
+
+    if (!quote) {
+      return res.status(400).json({ success: false });
+    }
+
+    res.status(200).json({ success: true, data: {} });
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
 };
