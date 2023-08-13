@@ -9,7 +9,7 @@ exports.getQuotes = async (req, res, next) => {
 
     res.status(200).json({ success: true, count: quote.length, data: quote });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 };
 
@@ -20,11 +20,11 @@ exports.getQuote = async (req, res, next) => {
   try {
     const quote = await Quote.findById(req.params.id);
     if (!quote) {
-      return res.status(400).json({ success: false });
+      next(err);
     }
     res.status(200).json({ success: true, data: quote });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 };
 
@@ -39,9 +39,7 @@ exports.createQuote = async (req, res, next) => {
       data: quote,
     });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
+    next(err);
   }
 };
 
@@ -56,14 +54,12 @@ exports.updateQuote = async (req, res, next) => {
     });
 
     if (!quote) {
-      return res.status(400).json({ succes: false });
+      next(err);
     }
 
     res.status(200).json({ success: true, data: quote });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-    });
+    next(err);
   }
 };
 
@@ -75,11 +71,11 @@ exports.deleteQuote = async (req, res, next) => {
     const quote = await Quote.findByIdAndDelete(req.params.id);
 
     if (!quote) {
-      return res.status(400).json({ success: false });
+      next(err);
     }
 
     res.status(200).json({ success: true, data: {} });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 };
