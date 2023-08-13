@@ -7,7 +7,7 @@ exports.getQuotes = async (req, res, next) => {
   try {
     const quote = await Quote.find();
 
-    res.status(200).json({ success: true, data: quote });
+    res.status(200).json({ success: true, count: quote.length, data: quote });
   } catch (err) {
     res.status(400).json({ success: false });
   }
