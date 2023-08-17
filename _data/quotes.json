@@ -1,0 +1,30 @@
+[
+	{
+        "name": "Give someone a program; you frustrate them for a day; teach them how to program, and you frustrate them for a lifetime",
+        "author": "David Leinweber"
+    },
+    {
+        "name": "Don’t comment bad code – rewrite it",
+        "author": "Brian Kernighan"
+    },
+    {
+        "name": "No one in the brief history of computing has ever written a piece of perfect software. It’s unlikely that you’ll be the first",
+        "author": "Andy Hunt"
+    },
+    {
+        "name": "A programming language is for thinking about programs, not for expressing programs you’ve already thought of. It should be a pencil, not a pen",
+        "author": "Paul Graham"
+    },
+    {
+        "name": "Sometimes it pays to stay in bed on Monday rather than spending the rest of the week debugging Monday’s code",
+        "author": "Dan Salomon"
+    },
+    {
+        "name": "Bad programmers worry about the code. Good programmers worry about data structures and their relationships",
+        "author": "Linus Torvalds"
+    },
+    {
+        "name": "Debugging becomes significantly easier if you first admit that you are the problem",
+        "author": "William Laeder"
+    }
+]
