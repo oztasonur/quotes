@@ -29,20 +29,28 @@ exports.getQuotes = async (req, res, next) => {
       (match) => `$${match}`
     );
 
+    queryParams = [];
+    queryParams.push({ $match: JSON.parse(queryStr) });
+
     // Finding resource
-    randAmount
-      ? (query = Quote.aggregate([
-          { $match: JSON.parse(queryStr) },
-          { $sample: { size: parseInt(randAmount) } },
-        ]))
-      : (query = Quote.aggregate([{ $match: JSON.parse(queryStr) }]));
+
+    if (randAmount) {
+      queryParams.push({ $sample: { size: parseInt(randAmount) } });
+    }
 
     // Select Fields
     if (req.query.select) {
-      const fields = req.query.select.split(",").join(" ");
-      console.log(fields);
-      query = query.select(fields);
+      const fields = req.query.select.split(",");
+      let project = {};
+      fields.forEach((value) => {
+        project.$project = Object.assign({}, project.$project, {
+          [value]: 1,
+        });
+      });
+      queryParams.push(project);
     }
+
+    query = Quote.aggregate(queryParams);
 
     // Sort
     if (req.query.sort) {
