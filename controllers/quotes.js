@@ -1,4 +1,5 @@
 const Quote = require("../models/Quote");
+const ErrorResponse = require("../utils/errorResponse");
 
 // @desc        Get all quotes
 // @route       GET /api/v1/quotes
@@ -104,7 +105,9 @@ exports.getQuote = async (req, res, next) => {
   try {
     const quote = await Quote.findById(req.params.id);
     if (!quote) {
-      next(err);
+      return next(
+        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+      );
     }
     res.status(200).json({ success: true, data: quote });
   } catch (err) {
@@ -138,7 +141,9 @@ exports.updateQuote = async (req, res, next) => {
     });
 
     if (!quote) {
-      next(err);
+      return next(
+        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+      );
     }
 
     res.status(200).json({ success: true, data: quote });
@@ -155,7 +160,9 @@ exports.deleteQuote = async (req, res, next) => {
     const quote = await Quote.findByIdAndDelete(req.params.id);
 
     if (!quote) {
-      next(err);
+      return next(
+        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+      );
     }
 
     res.status(200).json({ success: true, data: {} });
