@@ -14,6 +14,7 @@ connectDB();
 
 // Route files
 const quotes = require("./routes/quotes");
+const authors = require("./routes/authors");
 
 const app = express();
 
@@ -30,6 +31,7 @@ const PORT = process.env.PORT || 5000;
 
 // Mount routers
 app.use("/v1/quotes", quotes);
+app.use("/v1/authors", authors);
 
 app.use(errorHandler);
 
