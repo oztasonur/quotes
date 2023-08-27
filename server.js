@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
+const path = require('path');
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -31,6 +32,11 @@ const PORT = process.env.PORT || 5000;
 app.use("/v1/quotes", quotes);
 
 app.use(errorHandler);
+
+// sendFile will go here
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+});
 
 const server = app.listen(
   PORT,

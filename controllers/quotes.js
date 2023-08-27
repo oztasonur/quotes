@@ -107,7 +107,7 @@ exports.getQuote = asyncHandler(async (req, res, next) => {
     const quote = await Quote.findById(req.params.id);
     if (!quote) {
       return next(
-        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+        new ErrorResponse(`Quote not found with id of ${req.params.id}`, 404)
       );
     }
     res.status(200).json({ success: true, data: quote });
