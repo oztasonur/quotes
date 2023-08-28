@@ -1,30 +1,61 @@
 [
 	{
-        "name": "Give someone a program; you frustrate them for a day; teach them how to program, and you frustrate them for a lifetime",
-        "author": "David Leinweber"
+        "_id": "64ec899a47f2b989f315d119",
+        "name": "It's a personality trait: from the very beginning, I knew what I was concentrating on. I'm only doing the kernel - I always found everything around it to be completely boring.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "Don’t comment bad code – rewrite it",
-        "author": "Brian Kernighan"
+        "_id": "64ec899a47f2b989f315d11a",
+        "name": "An individual developer like me cares about writing the new code and making it as interesting and efficient as possible. But very few people want to do the testing.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "No one in the brief history of computing has ever written a piece of perfect software. It’s unlikely that you’ll be the first",
-        "author": "Andy Hunt"
+        "_id": "64ec899a47f2b989f315d11d",
+        "name": "By staying neutral, I end up being somebody that everybody can trust. Even if they don't always agree with my decisions, they know I'm not working against them.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "A programming language is for thinking about programs, not for expressing programs you’ve already thought of. It should be a pencil, not a pen",
-        "author": "Paul Graham"
+        "_id": "64ec899a47f2b989f315d11c",
+        "name": "I lose sleep if I end up feeling bad about something I've said. Usually that happens when I send something out without having read it over a few times, or when I call somebody names.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "Sometimes it pays to stay in bed on Monday rather than spending the rest of the week debugging Monday’s code",
-        "author": "Dan Salomon"
+        "_id": "64ec899a47f2b989f315d11b",
+        "name": "Every once in a while an issue comes up where I have to make a statement. I can't totally avoid all political issues, but I try my best to minimize them. When I do make a statement, I try to be fairly neutral.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "Bad programmers worry about the code. Good programmers worry about data structures and their relationships",
-        "author": "Linus Torvalds"
+        "_id": "64ec899a47f2b989f315d11e",
+        "name": "I personally think of Linux development as being pretty non-localized, and I work with all the people entirely over e-mail - even if they happen to be working in the Portland area.",
+        "author": "64ec879a16bdcce8a8103b74"
     },
     {
-        "name": "Debugging becomes significantly easier if you first admit that you are the problem",
-        "author": "William Laeder"
+        "_id": "64ec899a47f2b989f315d11f",
+        "name": "Software patents, in particular, are very ripe for abuse. The whole system encourages big corporations getting thousands and thousands of patents. Individuals almost never get them.",
+        "author": "64ec879a16bdcce8a8103b74"
+    },
+    {
+        "name": "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live",
+        "author": "64eca4a1f03906710411908e"
+    },
+    {
+        "name": "Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning.",
+        "author": "64eca4a1f03906710411908f"
+    },
+    {
+        "name": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+        "author": "64eca4a1f039067104119090"
+    },
+    {
+        "name": "The best programs are written so that computing machines can perform them quickly and so that human beings can understand them clearly. A programmer is ideally an essayist who works with traditional aesthetic and literary forms as well as mathematical concepts, to communicate the way that an algorithm works and to convince a reader that the results will be correct.",
+        "author": "64eca4a1f039067104119091"
+    },
+    {
+        "name": "I'm not a great programmer; I'm just a good programmer with great habits.",
+        "author": "64eca4a1f039067104119092"
+    },
+    {
+        "name": "Truth can only be found in one place: the code.",
+        "author": "64eca4a1f039067104119093"
     }
 ]

@@ -1,6 +1,7 @@
 const Quote = require("../models/Quote");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
+const mongoose = require("mongoose");
 
 // @desc        Get all quotes
 // @route       GET /api/v1/quotes
@@ -15,12 +16,18 @@ exports.getQuotes = asyncHandler(async (req, res, next) => {
     const randAmount = req.query.random;
 
     // Fields to exclude
-    const removeFields = ["select", "sort", "random", "page", "limit"];
+    const removeFields = [
+      "select",
+      "sort",
+      "random",
+      "page",
+      "limit",
+      "author",
+      "lookup",
+    ];
 
     // Loop over removeFields and delete them from reqQuery
     removeFields.forEach((param) => delete reqQuery[param]);
-
-    // console.log(reqQuery);
 
     // Create query string
     let queryStr = JSON.stringify(reqQuery);
@@ -33,6 +40,23 @@ exports.getQuotes = asyncHandler(async (req, res, next) => {
 
     queryParams = [];
     queryParams.push({ $match: JSON.parse(queryStr) });
+
+    if (req.query.lookup === "author") {
+      queryParams.push(
+        {
+          $lookup: {
+            from: "authors",
+            localField: "author",
+            foreignField: "_id",
+            pipeline: [{ $project: { name: 1 } }],
+            as: "author",
+          },
+        },
+        {
+          $unwind: "$author",
+        }
+      );
+    }
 
     // Finding resource
 
@@ -50,6 +74,14 @@ exports.getQuotes = asyncHandler(async (req, res, next) => {
         });
       });
       queryParams.push(project);
+    }
+
+    if (req.query.author) {
+      queryParams.push({
+        $match: {
+          "author._id": new mongoose.Types.ObjectId(req.query.author),
+        },
+      });
     }
 
     query = Quote.aggregate(queryParams);
@@ -143,7 +175,7 @@ exports.updateQuote = asyncHandler(async (req, res, next) => {
 
     if (!quote) {
       return next(
-        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+        new ErrorResponse(`Quote not found with id of ${req.params.id}`, 404)
       );
     }
 
@@ -162,7 +194,7 @@ exports.deleteQuote = asyncHandler(async (req, res, next) => {
 
     if (!quote) {
       return next(
-        new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
+        new ErrorResponse(`Quote not found with id of ${req.params.id}`, 404)
       );
     }
 
