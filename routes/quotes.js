@@ -10,8 +10,14 @@ const {
 
 const router = express.Router();
 
-router.route("/").get(getQuotes).post(createQuote);
+const { protect } = require("../middleware/auth");
 
-router.route("/:id").get(getQuote).put(updateQuote).delete(deleteQuote);
+router.route("/").get(protect, getQuotes).post(protect, createQuote);
+
+router
+  .route("/:id")
+  .get(protect, getQuote)
+  .put(protect, updateQuote)
+  .delete(protect, deleteQuote);
 
 module.exports = router;

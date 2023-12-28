@@ -10,8 +10,14 @@ const {
 
 const router = express.Router();
 
-router.route("/").get(getAuthors).post(createAuthor);
+const { protect } = require("../middleware/auth");
 
-router.route("/:id").get(getAuthor).put(updateAuthor).delete(deleteAuthor);
+router.route("/").get(protect, getAuthors).post(protect, createAuthor);
+
+router
+  .route("/:id")
+  .get(protect, getAuthor)
+  .put(protect, updateAuthor)
+  .delete(protect, deleteAuthor);
 
 module.exports = router;
